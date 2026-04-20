@@ -1,0 +1,43 @@
+/* styles/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Sora:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --green:   #00c896;
+  --green-d: #009e76;
+  --green-bg:#e6fff8;
+  --red:     #ff4444;
+  --red-d:   #cc2222;
+  --red-bg:  #fff0f0;
+  --yellow:  #f5a623;
+  --yellow-bg:#fff8e6;
+  --blue:    #0070f3;
+  --blue-bg: #e8f3ff;
+  --text:    #0d0d0d;
+  --text-2:  #555;
+  --text-3:  #999;
+  --border:  #e5e5e5;
+  --surface: #f7f7f5;
+  --white:   #ffffff;
+  --card-r:  12px;
+  --mono: 'DM Mono', monospace;
+  --sans: 'Sora', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; }
+
+body {
+  font-family: var(--sans);
+  background: var(--surface);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+
+::selection { background: #00c89620; }
