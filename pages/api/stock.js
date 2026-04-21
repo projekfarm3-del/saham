@@ -2,19 +2,37 @@
 // Backend proxy untuk fetch data realtime dari Finnhub API
 
 async function fetchFinnhubData(ticker) {
-  const apiKey = process.env.FINNHUB_API_KEY || "demo"; // Replace dengan API key di .env
+  const apiKey = process.env.FINNHUB_API_KEY;
+  
+  // Skip jika tidak ada API key (gunakan demo yang limited)
+  if (!apiKey || apiKey === "demo") {
+    console.log("Finnhub API key not configured, skipping Finnhub");
+    return null;
+  }
+
   // Finnhub API expects ticker WITHOUT .JK (e.g., IDNS, not IDNS.JK)
   const formatted = ticker.toUpperCase().replace(".JK", "");
 
   try {
     const res = await fetch(
-      `https://finnhub.io/api/v1/quote?symbol=${formatted}&token=${apiKey}`
+      `https://finnhub.io/api/v1/quote?symbol=${formatted}&token=${apiKey}`,
+      { timeout: 5000 }
     );
+    
+    if (!res.ok) {
+      console.error(`Finnhub HTTP Error: ${res.status}`);
+      return null;
+    }
+
     const data = await res.json();
     
-    if (data.c === undefined || data.c === null) {
+    // Check for error in response
+    if (data.error || data.c === undefined || data.c === null || data.c === 0) {
+      console.log(`Finnhub: No data for ${formatted}`, data);
       return null; // Not found
     }
+
+    console.log(`Finnhub SUCCESS: ${formatted} = ${data.c}`);
 
     // Transform Finnhub response to our format
     return {
@@ -44,7 +62,7 @@ async function fetchFinnhubData(ticker) {
       }
     };
   } catch (err) {
-    console.error("Finnhub API Error:", err);
+    console.error(`Finnhub API Error for ${formatted}:`, err.message);
     return null;
   }
 }
@@ -160,17 +178,18 @@ export default async function handler(req, res) {
     : ticker.toUpperCase() + ".JK";
 
   try {
-    // Try Finnhub API first
+    // Try Finnhub API first (if configured)
     const finnhubData = await fetchFinnhubData(ticker);
-    if (finnhubData) {
+    if (finnhubData && finnhubData.quoteSummary?.result?.[0]?.price?.regularMarketPrice) {
       res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate=600");
       return res.status(200).json(finnhubData);
     }
 
     // Fallback ke mock data
     const mockData = getMockData(formatted);
-    if (mockData) {
+    if (mockData && mockData.quoteSummary?.result?.[0]) {
       res.setHeader("Cache-Control", "s-maxage=3600");
+      console.log(`Using MOCK DATA for ${formatted}`);
       return res.status(200).json(mockData);
     }
 
@@ -178,7 +197,7 @@ export default async function handler(req, res) {
       error: `Saham ${formatted} tidak ditemukan. Cek kode saham.`,
     });
   } catch (err) {
-    console.error("API Error:", err);
+    console.error("API Handler Error:", err);
     return res.status(500).json({
       error: `Gagal mengambil data: ${err.message}`,
     });
