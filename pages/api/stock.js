@@ -24,10 +24,45 @@ function getMockData(ticker) {
       quoteSummary: {
         result: [{
           price: { regularMarketPrice: 8850 },
-          defaultKeyStatistics: { trailingEps: 1200, trailingPE: 7.5 },
-          summaryDetail: { marketCap: 2700000000000, trailingPE: 7.5 },
-          incomeStatementHistory: { incomeStatementHistory: [{ totalRevenue: 150000000000 }] },
-          balanceSheetHistory: { balanceSheetStatements: [{ totalAssets: 1000000000000 }] },
+          defaultKeyStatistics: { 
+            trailingEps: 1200, 
+            trailingPE: 7.5,
+            returnOnEquity: 0.18,
+            returnOnAssets: 0.025,
+            bookValue: 45000,
+            sharesOutstanding: 30000000000
+          },
+          summaryDetail: { 
+            marketCap: 2700000000000, 
+            trailingPE: 7.5 
+          },
+          financialData: {
+            totalRevenue: 150000000000,
+            totalDebt: 200000000000,
+            totalCash: 300000000000,
+            profitMargins: 0.35,
+            operatingMargins: 0.40,
+            netIncomeToCommon: 52500000000,
+            returnOnEquity: 0.18,
+            returnOnAssets: 0.025,
+            debtToEquity: 25,
+            currentRatio: 1.5,
+            quickRatio: 1.2,
+            priceToBook: 1.97
+          },
+          incomeStatementHistory: { 
+            incomeStatementHistory: [{ 
+              totalRevenue: 150000000000,
+              netIncome: 52500000000
+            }] 
+          },
+          balanceSheetHistory: { 
+            balanceSheetStatements: [{ 
+              totalAssets: 1000000000000,
+              totalLiab: 200000000000,
+              totalStockholderEquity: 800000000000
+            }] 
+          },
         }]
       }
     },
@@ -35,10 +70,45 @@ function getMockData(ticker) {
       quoteSummary: {
         result: [{
           price: { regularMarketPrice: 3260 },
-          defaultKeyStatistics: { trailingEps: 250, trailingPE: 13 },
-          summaryDetail: { marketCap: 900000000000, trailingPE: 13 },
-          incomeStatementHistory: { incomeStatementHistory: [{ totalRevenue: 200000000000 }] },
-          balanceSheetHistory: { balanceSheetStatements: [{ totalAssets: 500000000000 }] },
+          defaultKeyStatistics: { 
+            trailingEps: 250, 
+            trailingPE: 13,
+            returnOnEquity: 0.15,
+            returnOnAssets: 0.08,
+            bookValue: 15000,
+            sharesOutstanding: 276000000000
+          },
+          summaryDetail: { 
+            marketCap: 900000000000, 
+            trailingPE: 13 
+          },
+          financialData: {
+            totalRevenue: 200000000000,
+            totalDebt: 150000000000,
+            totalCash: 50000000000,
+            profitMargins: 0.18,
+            operatingMargins: 0.22,
+            netIncomeToCommon: 36000000000,
+            returnOnEquity: 0.15,
+            returnOnAssets: 0.08,
+            debtToEquity: 43,
+            currentRatio: 1.3,
+            quickRatio: 1.1,
+            priceToBook: 0.87
+          },
+          incomeStatementHistory: { 
+            incomeStatementHistory: [{ 
+              totalRevenue: 200000000000,
+              netIncome: 36000000000
+            }] 
+          },
+          balanceSheetHistory: { 
+            balanceSheetStatements: [{ 
+              totalAssets: 500000000000,
+              totalLiab: 150000000000,
+              totalStockholderEquity: 350000000000
+            }] 
+          },
         }]
       }
     },
@@ -46,10 +116,45 @@ function getMockData(ticker) {
       quoteSummary: {
         result: [{
           price: { regularMarketPrice: 6750 },
-          defaultKeyStatistics: { trailingEps: 600, trailingPE: 11.25 },
-          summaryDetail: { marketCap: 1200000000000, trailingPE: 11.25 },
-          incomeStatementHistory: { incomeStatementHistory: [{ totalRevenue: 300000000000 }] },
-          balanceSheetHistory: { balanceSheetStatements: [{ totalAssets: 800000000000 }] },
+          defaultKeyStatistics: { 
+            trailingEps: 600, 
+            trailingPE: 11.25,
+            returnOnEquity: 0.22,
+            returnOnAssets: 0.12,
+            bookValue: 32000,
+            sharesOutstanding: 178800000000
+          },
+          summaryDetail: { 
+            marketCap: 1200000000000, 
+            trailingPE: 11.25 
+          },
+          financialData: {
+            totalRevenue: 300000000000,
+            totalDebt: 100000000000,
+            totalCash: 200000000000,
+            profitMargins: 0.30,
+            operatingMargins: 0.35,
+            netIncomeToCommon: 90000000000,
+            returnOnEquity: 0.22,
+            returnOnAssets: 0.12,
+            debtToEquity: 14,
+            currentRatio: 1.8,
+            quickRatio: 1.5,
+            priceToBook: 2.11
+          },
+          incomeStatementHistory: { 
+            incomeStatementHistory: [{ 
+              totalRevenue: 300000000000,
+              netIncome: 90000000000
+            }] 
+          },
+          balanceSheetHistory: { 
+            balanceSheetStatements: [{ 
+              totalAssets: 800000000000,
+              totalLiab: 100000000000,
+              totalStockholderEquity: 700000000000
+            }] 
+          },
         }]
       }
     },
