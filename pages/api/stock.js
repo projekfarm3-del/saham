@@ -3,9 +3,8 @@
 
 async function fetchFinnhubData(ticker) {
   const apiKey = process.env.FINNHUB_API_KEY || "demo"; // Replace dengan API key di .env
-  const formatted = ticker.toUpperCase().includes(".JK") 
-    ? ticker.toUpperCase() 
-    : ticker.toUpperCase() + ".JK";
+  // Finnhub API expects ticker WITHOUT .JK (e.g., IDNS, not IDNS.JK)
+  const formatted = ticker.toUpperCase().replace(".JK", "");
 
   try {
     const res = await fetch(
