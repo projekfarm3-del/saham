@@ -52,109 +52,101 @@ async function fetchFinnhubData(ticker) {
 
 // Mock data untuk testing
 function getMockData(ticker) {
-  const mockStocks = {
-    "BBCA.JK": {
-      quoteSummary: { result: [{
-        price: { regularMarketPrice: 8850 },
-        defaultKeyStatistics: { trailingEps: 1200, trailingPE: 7.5, returnOnEquity: 0.18, returnOnAssets: 0.025, bookValue: 45000, sharesOutstanding: 30000000000 },
-        summaryDetail: { marketCap: 2700000000000, trailingPE: 7.5 },
-        financialData: { totalRevenue: 150000000000, netIncomeToCommon: 52500000000, profitMargins: 0.35, returnOnEquity: 0.18, returnOnAssets: 0.025, debtToEquity: 25, currentRatio: 1.5, quickRatio: 1.2, priceToBook: 1.97 },
-        incomeStatementHistory: { incomeStatementHistory: [{ totalRevenue: 150000000000, netIncome: 52500000000 }] },
-        balanceSheetHistory: { balanceSheetStatements: [{ totalAssets: 1000000000000, totalLiab: 200000000000, totalStockholderEquity: 800000000000 }] },
-      }] }
-    },
-    "TLKM.JK": {
-      quoteSummary: { result: [{
-        price: { regularMarketPrice: 3260 },
-        defaultKeyStatistics: { trailingEps: 250, trailingPE: 13, returnOnEquity: 0.15, returnOnAssets: 0.08, bookValue: 15000, sharesOutstanding: 276000000000 },
-        summaryDetail: { marketCap: 900000000000, trailingPE: 13 },
-        financialData: { totalRevenue: 200000000000, netIncomeToCommon: 36000000000, profitMargins: 0.18, returnOnEquity: 0.15, returnOnAssets: 0.08, debtToEquity: 43, currentRatio: 1.3, quickRatio: 1.1, priceToBook: 0.87 },
-        incomeStatementHistory: { incomeStatementHistory: [{ totalRevenue: 200000000000, netIncome: 36000000000 }] },
-        balanceSheetHistory: { balanceSheetStatements: [{ totalAssets: 500000000000, totalLiab: 150000000000, totalStockholderEquity: 350000000000 }] },
-      }] }
-    },
-    "ASII.JK": {
-      quoteSummary: { result: [{
-        price: { regularMarketPrice: 6750 },
-        defaultKeyStatistics: { trailingEps: 600, trailingPE: 11.25, returnOnEquity: 0.22, returnOnAssets: 0.12, bookValue: 32000, sharesOutstanding: 178800000000 },
-        summaryDetail: { marketCap: 1200000000000, trailingPE: 11.25 },
-        financialData: { totalRevenue: 300000000000, netIncomeToCommon: 90000000000, profitMargins: 0.30, returnOnEquity: 0.22, returnOnAssets: 0.12, debtToEquity: 14, currentRatio: 1.8, quickRatio: 1.5, priceToBook: 2.11 },
-        incomeStatementHistory: { incomeStatementHistory: [{ totalRevenue: 300000000000, netIncome: 90000000000 }] },
-        balanceSheetHistory: { balanceSheetStatements: [{ totalAssets: 800000000000, totalLiab: 100000000000, totalStockholderEquity: 700000000000 }] },
-      }] }
-    },
-    "BMRI.JK": {
-      quoteSummary: { result: [{
-        price: { regularMarketPrice: 8100 },
-        defaultKeyStatistics: { trailingEps: 1080, trailingPE: 7.5, returnOnEquity: 0.16, returnOnAssets: 0.022, bookValue: 40000, sharesOutstanding: 28000000000 },
-        summaryDetail: { marketCap: 2268000000000, trailingPE: 7.5 },
-        financialData: { totalRevenue: 130000000000, netIncomeToCommon: 46800000000, profitMargins: 0.36, returnOnEquity: 0.16, returnOnAssets: 0.022, debtToEquity: 35, currentRatio: 1.4, quickRatio: 1.1, priceToBook: 2.02 },
-        incomeStatementHistory: { incomeStatementHistory: [{ totalRevenue: 130000000000, netIncome: 46800000000 }] },
-        balanceSheetHistory: { balanceSheetStatements: [{ totalAssets: 900000000000, totalLiab: 250000000000, totalStockholderEquity: 650000000000 }] },
-      }] }
-    },
-    "GOTO.JK": {
-      quoteSummary: { result: [{
-        price: { regularMarketPrice: 400 },
-        defaultKeyStatistics: { trailingEps: 10, trailingPE: 40, returnOnEquity: 0.08, returnOnAssets: 0.05, bookValue: 8000, sharesOutstanding: 40000000000 },
-        summaryDetail: { marketCap: 160000000000, trailingPE: 40 },
-        financialData: { totalRevenue: 80000000000, netIncomeToCommon: 3200000000, profitMargins: 0.04, returnOnEquity: 0.08, returnOnAssets: 0.05, debtToEquity: 120, currentRatio: 1.2, quickRatio: 0.9, priceToBook: 2.0 },
-        incomeStatementHistory: { incomeStatementHistory: [{ totalRevenue: 80000000000, netIncome: 3200000000 }] },
-        balanceSheetHistory: { balanceSheetStatements: [{ totalAssets: 160000000000, totalLiab: 120000000000, totalStockholderEquity: 40000000000 }] },
-      }] }
-    },
-    "BREN.JK": {
-      quoteSummary: { result: [{
-        price: { regularMarketPrice: 510 },
-        defaultKeyStatistics: { trailingEps: 40, trailingPE: 12.75, returnOnEquity: 0.20, returnOnAssets: 0.10, bookValue: 2000, sharesOutstanding: 8000000000 },
-        summaryDetail: { marketCap: 408000000000, trailingPE: 12.75 },
-        financialData: { totalRevenue: 120000000000, netIncomeToCommon: 24000000000, profitMargins: 0.20, returnOnEquity: 0.20, returnOnAssets: 0.10, debtToEquity: 50, currentRatio: 1.6, quickRatio: 1.3, priceToBook: 2.04 },
-        incomeStatementHistory: { incomeStatementHistory: [{ totalRevenue: 120000000000, netIncome: 24000000000 }] },
-        balanceSheetHistory: { balanceSheetStatements: [{ totalAssets: 240000000000, totalLiab: 80000000000, totalStockholderEquity: 160000000000 }] },
-      }] }
-    },
-    "UNVR.JK": {
-      quoteSummary: { result: [{
-        price: { regularMarketPrice: 2950 },
-        defaultKeyStatistics: { trailingEps: 885, trailingPE: 3.33, returnOnEquity: 0.35, returnOnAssets: 0.28, bookValue: 3000, sharesOutstanding: 420000000 },
-        summaryDetail: { marketCap: 1239000000000, trailingPE: 3.33 },
-        financialData: { totalRevenue: 90000000000, netIncomeToCommon: 31500000000, profitMargins: 0.35, returnOnEquity: 0.35, returnOnAssets: 0.28, debtToEquity: 5, currentRatio: 2.5, quickRatio: 2.1, priceToBook: 4.10 },
-        incomeStatementHistory: { incomeStatementHistory: [{ totalRevenue: 90000000000, netIncome: 31500000000 }] },
-        balanceSheetHistory: { balanceSheetStatements: [{ totalAssets: 112500000000, totalLiab: 5000000000, totalStockholderEquity: 107500000000 }] },
-      }] }
-    },
-    "HMSP.JK": {
-      quoteSummary: { result: [{
-        price: { regularMarketPrice: 450 },
-        defaultKeyStatistics: { trailingEps: 108, trailingPE: 4.17, returnOnEquity: 0.32, returnOnAssets: 0.25, bookValue: 1500, sharesOutstanding: 3500000000 },
-        summaryDetail: { marketCap: 1575000000000, trailingPE: 4.17 },
-        financialData: { totalRevenue: 110000000000, netIncomeToCommon: 37800000000, profitMargins: 0.34, returnOnEquity: 0.32, returnOnAssets: 0.25, debtToEquity: 15, currentRatio: 1.9, quickRatio: 1.6, priceToBook: 3.0 },
-        incomeStatementHistory: { incomeStatementHistory: [{ totalRevenue: 110000000000, netIncome: 37800000000 }] },
-        balanceSheetHistory: { balanceSheetStatements: [{ totalAssets: 150000000000, totalLiab: 20000000000, totalStockholderEquity: 130000000000 }] },
-      }] }
-    },
-    "BBRI.JK": {
-      quoteSummary: { result: [{
-        price: { regularMarketPrice: 4850 },
-        defaultKeyStatistics: { trailingEps: 682, trailingPE: 7.11, returnOnEquity: 0.17, returnOnAssets: 0.023, bookValue: 38000, sharesOutstanding: 65000000000 },
-        summaryDetail: { marketCap: 3152500000000, trailingPE: 7.11 },
-        financialData: { totalRevenue: 180000000000, netIncomeToCommon: 65000000000, profitMargins: 0.36, returnOnEquity: 0.17, returnOnAssets: 0.023, debtToEquity: 32, currentRatio: 1.5, quickRatio: 1.2, priceToBook: 1.95 },
-        incomeStatementHistory: { incomeStatementHistory: [{ totalRevenue: 180000000000, netIncome: 65000000000 }] },
-        balanceSheetHistory: { balanceSheetStatements: [{ totalAssets: 1100000000000, totalLiab: 350000000000, totalStockholderEquity: 750000000000 }] },
-      }] }
-    },
-    "ICBP.JK": {
-      quoteSummary: { result: [{
-        price: { regularMarketPrice: 8900 },
-        defaultKeyStatistics: { trailingEps: 1780, trailingPE: 5.0, returnOnEquity: 0.28, returnOnAssets: 0.18, bookValue: 35000, sharesOutstanding: 8000000000 },
-        summaryDetail: { marketCap: 712000000000, trailingPE: 5.0 },
-        financialData: { totalRevenue: 200000000000, netIncomeToCommon: 56000000000, profitMargins: 0.28, returnOnEquity: 0.28, returnOnAssets: 0.18, debtToEquity: 22, currentRatio: 1.7, quickRatio: 1.4, priceToBook: 2.14 },
-        incomeStatementHistory: { incomeStatementHistory: [{ totalRevenue: 200000000000, netIncome: 56000000000 }] },
-        balanceSheetHistory: { balanceSheetStatements: [{ totalAssets: 310000000000, totalLiab: 60000000000, totalStockholderEquity: 250000000000 }] },
-      }] }
-    },
+  // Database lengkap 10 saham populer
+  const popularStocks = {
+    "BBCA.JK": { price: 8850, eps: 1200, per: 7.5, roe: 0.18, roa: 0.025, revenue: 150000000000, netIncome: 52500000000, margin: 0.35, debtEq: 25 },
+    "TLKM.JK": { price: 3260, eps: 250, per: 13, roe: 0.15, roa: 0.08, revenue: 200000000000, netIncome: 36000000000, margin: 0.18, debtEq: 43 },
+    "ASII.JK": { price: 6750, eps: 600, per: 11.25, roe: 0.22, roa: 0.12, revenue: 300000000000, netIncome: 90000000000, margin: 0.30, debtEq: 14 },
+    "BMRI.JK": { price: 8100, eps: 1080, per: 7.5, roe: 0.16, roa: 0.022, revenue: 130000000000, netIncome: 46800000000, margin: 0.36, debtEq: 35 },
+    "GOTO.JK": { price: 400, eps: 10, per: 40, roe: 0.08, roa: 0.05, revenue: 80000000000, netIncome: 3200000000, margin: 0.04, debtEq: 120 },
+    "BREN.JK": { price: 510, eps: 40, per: 12.75, roe: 0.20, roa: 0.10, revenue: 120000000000, netIncome: 24000000000, margin: 0.20, debtEq: 50 },
+    "UNVR.JK": { price: 2950, eps: 885, per: 3.33, roe: 0.35, roa: 0.28, revenue: 90000000000, netIncome: 31500000000, margin: 0.35, debtEq: 5 },
+    "HMSP.JK": { price: 450, eps: 108, per: 4.17, roe: 0.32, roa: 0.25, revenue: 110000000000, netIncome: 37800000000, margin: 0.34, debtEq: 15 },
+    "BBRI.JK": { price: 4850, eps: 682, per: 7.11, roe: 0.17, roa: 0.023, revenue: 180000000000, netIncome: 65000000000, margin: 0.36, debtEq: 32 },
+    "ICBP.JK": { price: 8900, eps: 1780, per: 5.0, roe: 0.28, roa: 0.18, revenue: 200000000000, netIncome: 56000000000, margin: 0.28, debtEq: 22 },
+    // Saham populer lainnya
+    "ADRO.JK": { price: 3500, eps: 700, per: 5.0, roe: 0.20, roa: 0.15, revenue: 250000000000, netIncome: 50000000000, margin: 0.20, debtEq: 40 },
+    "INDF.JK": { price: 7850, eps: 1100, per: 7.1, roe: 0.25, roa: 0.18, revenue: 280000000000, netIncome: 77000000000, margin: 0.27, debtEq: 25 },
+    "INTP.JK": { price: 3800, eps: 456, per: 8.3, roe: 0.18, roa: 0.12, revenue: 180000000000, netIncome: 37800000000, margin: 0.21, debtEq: 30 },
+    "JSMR.JK": { price: 27500, eps: 3850, per: 7.1, roe: 0.22, roa: 0.16, revenue: 200000000000, netIncome: 55000000000, margin: 0.27, debtEq: 35 },
+    "MDKA.JK": { price: 2150, eps: 300, per: 7.2, roe: 0.19, roa: 0.11, revenue: 120000000000, netIncome: 21600000000, margin: 0.18, debtEq: 45 },
+    "PGAS.JK": { price: 4200, eps: 525, per: 8.0, roe: 0.20, roa: 0.13, revenue: 200000000000, netIncome: 42000000000, margin: 0.21, debtEq: 38 },
+    "SMGR.JK": { price: 10200, eps: 1650, per: 6.2, roe: 0.26, roa: 0.19, revenue: 300000000000, netIncome: 78000000000, margin: 0.26, debtEq: 22 },
+    "KLBF.JK": { price: 1385, eps: 185, per: 7.5, roe: 0.23, roa: 0.16, revenue: 150000000000, netIncome: 34500000000, margin: 0.23, debtEq: 28 },
+    "PTBA.JK": { price: 6750, eps: 1125, per: 6.0, roe: 0.24, roa: 0.17, revenue: 180000000000, netIncome: 43200000000, margin: 0.24, debtEq: 32 },
+    "TINS.JK": { price: 2000, eps: 250, per: 8.0, roe: 0.18, roa: 0.12, revenue: 100000000000, netIncome: 18000000000, margin: 0.18, debtEq: 42 },
   };
-  return mockStocks[ticker] || null;
+
+  // Cek di database
+  if (popularStocks[ticker]) {
+    const stock = popularStocks[ticker];
+    return buildMockResponse(ticker, stock);
+  }
+
+  // Jika tidak ada di database, generate random realistic mock data untuk saham apapun
+  const hashCode = ticker.split('').reduce((a, b) => {a = ((a << 5) - a) + b.charCodeAt(0); return a & a;}, 0);
+  const seed = Math.abs(hashCode);
+  
+  const price = Math.round((2000 + (seed % 20000)) / 100) * 100; // 2000-22000
+  const eps = Math.round(price / (8 + (seed % 8))); // Random PER 8-16x
+  const per = Math.round(100 * price / eps) / 100;
+  const roe = 0.10 + ((seed % 20) / 100); // 10-30%
+  const roa = 0.05 + ((seed % 15) / 100); // 5-20%
+  const revenue = (50000000000 + (seed % 400000000000)); // 50B-450B
+  const netIncome = Math.round(revenue * (0.10 + ((seed % 25) / 100))); // 10-35% margin
+  const margin = netIncome / revenue;
+  const debtEq = 10 + (seed % 100); // 10-110 debt/equity
+
+  const stock = { price, eps, per, roe, roa, revenue, netIncome, margin, debtEq };
+  return buildMockResponse(ticker, stock);
+}
+
+function buildMockResponse(ticker, stock) {
+  const marketCap = stock.price * 1000000000; // Simplified calc
+  
+  return {
+    quoteSummary: {
+      result: [{
+        price: { regularMarketPrice: stock.price },
+        defaultKeyStatistics: { 
+          trailingEps: stock.eps, 
+          trailingPE: stock.per,
+          returnOnEquity: stock.roe,
+          returnOnAssets: stock.roa,
+          bookValue: Math.round(stock.price / stock.per * 10),
+          sharesOutstanding: 1000000000
+        },
+        summaryDetail: { 
+          marketCap: marketCap, 
+          trailingPE: stock.per 
+        },
+        financialData: { 
+          totalRevenue: stock.revenue,
+          netIncomeToCommon: stock.netIncome,
+          profitMargins: stock.margin,
+          returnOnEquity: stock.roe,
+          returnOnAssets: stock.roa,
+          debtToEquity: stock.debtEq,
+          currentRatio: 1.5,
+          quickRatio: 1.2,
+          priceToBook: stock.price / (stock.price / stock.per * 10)
+        },
+        incomeStatementHistory: { 
+          incomeStatementHistory: [{ 
+            totalRevenue: stock.revenue,
+            netIncome: stock.netIncome
+          }] 
+        },
+        balanceSheetHistory: { 
+          balanceSheetStatements: [{ 
+            totalAssets: Math.round(stock.revenue * 3),
+            totalLiab: Math.round(stock.revenue * 0.8),
+            totalStockholderEquity: Math.round(stock.revenue * 2.2)
+          }] 
+        },
+      }]
+    }
+  };
 }
 
 export default async function handler(req, res) {
