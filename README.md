@@ -17,6 +17,38 @@ Web app analisa valuasi saham Indonesia secara realtime. Cukup masukkan kode sah
 
 ## 🚀 Deploy ke Vercel (Gratis, 5 menit)
 
+### Setup Data Realtime (Opsional tapi Recommended)
+
+Untuk mendapatkan data **realtime dari seluruh IDX stocks**, daftar gratis di **Finnhub.io**:
+
+1. **Daftar di Finnhub**
+   - Buka [finnhub.io/register](https://finnhub.io/register)
+   - Verify email Anda
+   - Copy **API Key** dari dashboard
+
+2. **Setup di Vercel**
+   - Di Vercel Dashboard, masuk ke Project **saham**
+   - Settings → Environment Variables
+   - Add variable:
+     - Name: `FINNHUB_API_KEY`
+     - Value: `[paste API key Anda dari Finnhub]`
+   - Redeploy project
+
+3. **Setup Lokal (Development)**
+   - Edit file `.env.local` di root folder
+   - Paste API key Anda:
+     ```
+     FINNHUB_API_KEY=your_api_key_here
+     ```
+   - Restart dev server
+
+**Catatan:** 
+- Finnhub gratis tanpa limit untuk personal use
+- Data delay ~15 menit (sama seperti Yahoo Finance)
+- Support **semua IDX stocks**, bukan hanya 10 saham populer
+
+---
+
 ### Cara 1: Via GitHub (Direkomendasikan)
 
 1. **Upload ke GitHub**
